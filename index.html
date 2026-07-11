@@ -4,9 +4,114 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recipe Vault</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="header-inner">
+          <div>
+            <a href="#home" class="brand">Recipe Vault</a>
+          </div>
+          <div class="header-actions">
+            <button class="nav-button active" data-view="home">Recipes</button>
+            <button class="nav-button" data-view="new">New recipe</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <section id="home-view">
+          <div class="hero-card">
+            <span class="eyebrow">Recipe system</span>
+            <h1>Save your favorite recipes</h1>
+            <p>
+              Capture simple recipes with steps, notes, and an optional dish
+              image.
+            </p>
+            <button class="primary-button" data-view="new">New recipe</button>
+          </div>
+
+          <section class="recipes-panel">
+            <div class="recipes-header">
+              <div>
+                <p class="section-label">Recipes</p>
+                <p class="section-copy">
+                  Four samples plus anything you save locally.
+                </p>
+              </div>
+            </div>
+            <div id="recipe-grid" class="recipe-grid"></div>
+          </section>
+        </section>
+
+        <section id="new-view" class="hidden">
+          <form id="recipe-form" class="form-card">
+            <div class="form-header">
+              <span class="eyebrow">New recipe</span>
+              <h1>Add a recipe</h1>
+            </div>
+
+            <div class="form-section">
+              <label for="recipe-title">Recipe title</label>
+              <input
+                id="recipe-title"
+                type="text"
+                placeholder="e.g. Creamy tomato pasta"
+              />
+            </div>
+
+            <div class="form-section">
+              <label for="recipe-step">Recipe step</label>
+              <div class="step-input-row">
+                <input
+                  id="recipe-step"
+                  type="text"
+                  placeholder="Write one recipe sentence…"
+                />
+                <button id="add-step-button" class="icon-button" type="button">
+                  +
+                </button>
+              </div>
+              <ol id="step-list" class="step-list"></ol>
+            </div>
+
+            <div class="form-section">
+              <label for="dish-image">Dish image</label>
+              <div class="image-uploader" id="image-uploader">
+                <label class="image-upload-label" for="dish-image">
+                  <span class="image-icon">+</span>
+                  <div>
+                    <p>Choose an optional dish image</p>
+                    <p class="muted">PNG, JPG, or WebP</p>
+                  </div>
+                </label>
+                <input
+                  id="dish-image"
+                  type="file"
+                  accept="image/png,image/jpeg,image/webp"
+                />
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button
+                type="submit"
+                class="primary-button"
+                id="save-button"
+                disabled
+              >
+                Save recipe
+              </button>
+              <button type="button" class="secondary-button" id="cancel-button">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
   </body>
 </html>
