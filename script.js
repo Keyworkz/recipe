@@ -142,14 +142,18 @@ function toggleView(view) {
   document.querySelectorAll(".nav-button").forEach((button) => {
     button.classList.toggle("active", button.dataset.view === view);
   });
+
+  updateSelectionUi();
 }
 
 function updateSelectionUi() {
-  selectModeButton.classList.toggle("active", isSelectMode);
+  const isDetailVisible = detailView.classList.contains("hidden") === false;
+  selectModeButton.classList.toggle("hidden", isDetailVisible);
+  selectModeButton.classList.toggle("active", isSelectMode && !isDetailVisible);
   selectModeButton.textContent = isSelectMode ? "Cancel" : "Select";
   deleteSelectedButton.classList.toggle(
     "hidden",
-    !isSelectMode || selectedRecipeIds.size === 0,
+    !isSelectMode || selectedRecipeIds.size === 0 || isDetailVisible,
   );
 }
 
