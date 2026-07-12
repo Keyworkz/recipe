@@ -14,8 +14,30 @@
             <a href="#home" class="brand">Recipe Vault</a>
           </div>
           <div class="header-actions">
-            <button class="nav-button active" data-view="home">Recipes</button>
-            <button class="nav-button" data-view="new">New recipe</button>
+            <button class="nav-button" data-view="new">
+              <span class="button-label">New recipe</span>
+              <span class="button-icon" aria-hidden="true">✚</span>
+            </button>
+            <button class="nav-button" id="select-mode-button" type="button">
+              <span class="button-label">Select</span>
+              <span class="button-icon select-icon" aria-hidden="true">✏️</span>
+            </button>
+            <button
+              class="icon-button delete-selected-button hidden"
+              id="delete-selected-button"
+              type="button"
+              aria-label="Remove selected recipes"
+            >
+              🗑
+            </button>
+            <button
+              class="theme-toggle"
+              id="theme-toggle"
+              type="button"
+              aria-label="Toggle color theme"
+            >
+              ☀️
+            </button>
           </div>
         </div>
       </header>
@@ -43,6 +65,56 @@
             </div>
             <div id="recipe-grid" class="recipe-grid"></div>
           </section>
+        </section>
+
+        <section id="detail-view" class="hidden">
+          <div class="form-card detail-card">
+            <div class="form-header">
+              <span class="eyebrow">Recipe details</span>
+              <h1 id="detail-title">Recipe title</h1>
+            </div>
+
+            <div class="form-section">
+              <label for="detail-description">Description</label>
+              <textarea id="detail-description" rows="4"></textarea>
+            </div>
+
+            <div class="form-section">
+              <label>Ingredients</label>
+              <div id="ingredient-list" class="ingredient-list"></div>
+              <div class="step-input-row detail-ingredient-row">
+                <input
+                  id="ingredient-input"
+                  type="text"
+                  placeholder="Add an ingredient"
+                />
+                <button
+                  id="add-ingredient-button"
+                  class="icon-button"
+                  type="button"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button
+                type="button"
+                class="primary-button"
+                id="save-detail-button"
+              >
+                Save changes
+              </button>
+              <button
+                type="button"
+                class="secondary-button"
+                id="close-detail-button"
+              >
+                Back
+              </button>
+            </div>
+          </div>
         </section>
 
         <section id="new-view" class="hidden">
